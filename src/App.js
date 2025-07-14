@@ -56,7 +56,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>番号検索システム</h1>
+        <h1>ユニメモチェッカー</h1>
         <div className="search-container">
           <input
             type="text"
@@ -65,7 +65,7 @@ function App() {
             value={searchNumber}
             onChange={(e) => setSearchNumber(e.target.value)}
             onKeyPress={handleKeyPress}
-            placeholder="番号を入力してください（例: 001, 100, 999）"
+            placeholder="番号を入力してください"
             className="search-input"
             autoComplete="off"
             autoCorrect="off"
