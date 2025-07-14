@@ -3,12 +3,14 @@
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
+  overflow-x: hidden; /* 横スクロールを防ぐ */
 }
 
 .App-header {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .App-header h1 {
@@ -36,6 +38,9 @@
   outline: none;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   transition: transform 0.2s ease;
+  box-sizing: border-box;
+  -webkit-appearance: none; /* iOS Safari対応 */
+  appearance: none; /* 標準プロパティ */
 }
 
 .search-input:focus {
@@ -189,21 +194,51 @@
 }
 
 @media (max-width: 768px) {
+  .App-header {
+    padding: 15px 10px;
+  }
+  
   .App-header h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
   }
   
   .search-container {
     flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
   }
   
   .search-input {
-    width: 90%;
+    width: calc(100% - 40px);
+    max-width: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+  
+  .search-button, .clear-button {
+    width: calc(100% - 40px);
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+  
+  .result-container {
+    margin: 20px 10px;
+  }
+  
+  .result-card {
+    padding: 20px 15px;
+  }
+  
+  .result-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
   }
   
   .result-content {
     flex-direction: column;
     text-align: center;
+    gap: 15px;
   }
   
   .result-details {
@@ -212,6 +247,105 @@
   
   .result-image {
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .result-id {
+    font-size: 1.1rem;
+  }
+  
+  .result-category {
+    font-size: 1rem;
+  }
+  
+  .result-description {
+    font-size: 0.95rem;
+  }
+  
+  .available-numbers {
+    margin-top: 30px;
+    padding: 20px 15px;
+  }
+  
+  .available-numbers h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+  
+  .number-tag {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .error-message {
+    margin: 15px 10px;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+}
+
+/* 小さいスマホ向け（480px以下） */
+@media (max-width: 480px) {
+  .App-header {
+    padding: 10px 5px;
+  }
+  
+  .App-header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .search-input {
+    width: calc(100% - 20px);
+    padding: 10px 15px;
+    font-size: 0.95rem;
+  }
+  
+  .search-button, .clear-button {
+    width: calc(100% - 20px);
+    padding: 10px 15px;
+    font-size: 0.95rem;
+  }
+  
+  .result-card {
+    padding: 15px 10px;
+  }
+  
+  .result-card h2 {
+    font-size: 1.3rem;
+  }
+  
+  .result-image {
+    max-width: 250px;
+  }
+  
+  .available-numbers {
+    padding: 15px 10px;
+  }
+  
+  .number-tag {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+}
+
+/* タッチデバイス向けの追加スタイル */
+@media (hover: none) and (pointer: coarse) {
+  .search-button:hover, .clear-button:hover, .number-tag:hover {
+    transform: none;
+  }
+  
+  .search-button:active, .clear-button:active {
+    transform: scale(0.98);
+  }
+  
+  .number-tag:active {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.4);
+  }
+  
+  .search-input:focus {
+    transform: none;
   }
 }

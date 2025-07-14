@@ -28,6 +28,8 @@ function App() {
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       handleSearch();
+      // モバイルでキーボードを閉じる
+      e.target.blur();
     }
   };
 
@@ -35,20 +37,40 @@ function App() {
     setSearchNumber('');
     setSearchResult(null);
     setError('');
+    // フォーカスを外してキーボードを閉じる
+    if (document.activeElement && document.activeElement.blur) {
+      document.activeElement.blur();
+    }
+  };
+
+  const handleNumberTagClick = (id) => {
+    setSearchNumber(id);
+    // モバイルで自動検索
+    const result = data.items.find(item => item.id === id);
+    if (result) {
+      setSearchResult(result);
+      setError('');
+    }
   };
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>ユニメモリーチ目チェッカー</h1>
+        <h1>番号検索システム</h1>
         <div className="search-container">
           <input
             type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
             value={searchNumber}
             onChange={(e) => setSearchNumber(e.target.value)}
             onKeyPress={handleKeyPress}
-            placeholder="番号を入力してください"
+            placeholder="番号を入力してください（例: 001, 100, 999）"
             className="search-input"
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
           />
           <button onClick={handleSearch} className="search-button">
             検索
@@ -91,7 +113,7 @@ function App() {
               <span 
                 key={item.id} 
                 className="number-tag"
-                onClick={() => setSearchNumber(item.id)}
+                onClick={() => handleNumberTagClick(item.id)}
               >
                 {item.id}
               </span>
