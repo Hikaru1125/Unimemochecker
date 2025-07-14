@@ -1,49 +1,108 @@
-# Getting Started with Create React App
+# 番号検索システム
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+番号を入力して、対応する画像と説明を表示するWebアプリケーションです。
 
-## Available Scripts
+## デモ
 
-In the project directory, you can run:
+GitHub Pages: https://hikaru1125.github.io/Unimemochecker
 
-### `npm start`
+## 機能
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **番号検索**: 入力した番号に対応する項目を検索
+- **画像表示**: 各項目に関連する画像を表示
+- **詳細情報**: タイトル、カテゴリ、説明文を表示
+- **レスポンシブデザイン**: スマートフォン・タブレット対応
+- **クイック検索**: 利用可能な番号をクリックして即座に検索
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 技術スタック
 
-### `npm test`
+- React 19.1.0
+- CSS3 (レスポンシブデザイン)
+- JSON データファイル
+- GitHub Pages (デプロイ)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## セットアップ
 
-### `npm run build`
+### 必要な環境
+- Node.js
+- npm
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### インストール
+```bash
+# リポジトリをクローン
+git clone https://github.com/hikaru1125/Unimemochecker.git
+cd Unimemochecker
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# 依存関係をインストール
+npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# 開発サーバーを起動
+npm start
+```
 
-### `npm run eject`
+開発サーバーが起動すると、ブラウザで [http://localhost:3000](http://localhost:3000) にアクセスできます。
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### デプロイ
+```bash
+# GitHub Pagesにデプロイ
+npm run deploy
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 本番ビルド
+```bash
+npm run build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## データの追加・編集
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`src/data.json` ファイルで項目を管理できます：
 
-## Learn More
+```json
+{
+  "items": [
+    {
+      "id": "001",
+      "title": "項目タイトル",
+      "description": "詳細説明",
+      "image": "images/001.png",
+      "category": "カテゴリ名"
+    }
+  ]
+}
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 画像の配置
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+画像は `public/images/` フォルダに配置し、ファイル名は `{id}.png` 形式にしてください。
+例: `001.png`, `100.png`, `999.png`
+
+## モバイル対応
+
+- タッチ操作に最適化
+- レスポンシブレイアウト
+- 数値入力時にテンキー表示
+- 自動キーボード閉じ機能
+
+## プロジェクト構成
+
+```
+unimemo_checker/
+├── public/
+│   ├── images/          # 画像フォルダ
+│   ├── favicon.ico
+│   └── index.html
+├── src/
+│   ├── App.js          # メインコンポーネント
+│   ├── App.css         # スタイルシート
+│   ├── data.json       # データファイル
+│   └── index.js        # エントリーポイント
+├── package.json
+└── README.md
+```
+
+## ライセンス
+
+このプロジェクトはMITライセンスのもとで公開されています。
 
 ### Code Splitting
 
