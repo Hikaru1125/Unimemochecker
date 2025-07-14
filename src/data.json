@@ -2,7 +2,7 @@
   "items": [
     {
       "id": "1",
-      "title": "サンプル項目1",
+      "title": "NO.1",
       "description": "これは番号001に対応する説明文です。詳細な情報がここに記載されます。",
       "image": "images/1.png",
       "category": "カテゴリA"
