@@ -1,0 +1,182 @@
+/* 追加のモバイル最適化スタイル */
+
+/* スマートフォン専用のプレミアム強化 */
+@media (max-width: 768px) {
+  /* スクロール時の慣性を滑らかに */
+  body {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* プルダウンリフレッシュ防止 */
+  .App {
+    overscroll-behavior-y: contain;
+  }
+
+  /* タップハイライトの除去 */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* テキスト入力エリアは選択可能に */
+  input, textarea {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+
+  /* スマホ向けアニメーション最適化 */
+  .number-tag, .search-button, .clear-button {
+    will-change: transform, box-shadow;
+  }
+
+  /* iOS Safari向けのビューポート調整 */
+  .App-header {
+    padding-top: max(15px, env(safe-area-inset-top));
+    padding-bottom: max(15px, env(safe-area-inset-bottom));
+  }
+
+  /* タッチターゲットサイズの最適化 */
+  .number-tag, .search-button, .clear-button, .checklist-toggle {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* プレミアム グラデーション背景の調整 */
+  .App {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* スマホ向けカード間隔調整 */
+  .number-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 0 8px;
+  }
+
+  /* プレミアム グロー効果 */
+  .number-tag:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 1px rgba(102, 126, 234, 0.3), 0 3px 8px rgba(0,0,0,0.08);
+  }
+
+  /* 検索入力のプレミアム効果 */
+  .search-input::placeholder {
+    color: rgba(0,0,0,0.5);
+    font-style: italic;
+  }
+
+  /* ローディング状態のプレミアム効果 */
+  .loading-shimmer {
+    background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.1) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}
+
+/* 極小画面（320px以下）への特別対応 */
+@media (max-width: 320px) {
+  .App-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .number-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    padding: 0 6px;
+  }
+
+  .number-tag {
+    padding: 6px;
+    gap: 4px;
+    min-height: 90px;
+    border-radius: 8px;
+  }
+
+  .number-tag-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .number-text {
+    font-size: 9px;
+    line-height: 1.1;
+  }
+
+  .number-tag.checklist-mode {
+    padding: 6px;
+    min-height: 90px;
+  }
+
+  .number-tag.checklist-mode .number-tag-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .number-tag.checklist-mode .number-text {
+    font-size: 9px;
+  }
+
+  .search-input, .search-button, .clear-button {
+    width: calc(100% - 16px);
+    margin: 0 8px;
+  }
+}
+
+/* ランドスケープ（横向き）モード対応 */
+@media (max-width: 896px) and (orientation: landscape) and (max-height: 414px) {
+  .App-header {
+    padding: 6px;
+  }
+
+  .App-header h1 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+
+  .available-numbers {
+    margin-top: 12px;
+    padding: 10px;
+  }
+
+  .number-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .number-tag {
+    padding: 4px;
+    min-height: 70px;
+    border-radius: 8px;
+  }
+
+  .number-tag-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .number-text {
+    font-size: 9px;
+  }
+}

@@ -1,3 +1,5 @@
+@import url('./MobileOptimized.css');
+
 .App {
   text-align: center;
   min-height: 100vh;
@@ -300,82 +302,114 @@
 }
 
 .number-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
   justify-content: center;
+  padding: 0 10px;
 }
 
 .number-tag {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 10px 15px;
-  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: bold;
   border: 2px solid transparent;
   display: flex;
   align-items: center;
-  gap: 8px;
-  min-width: 120px;
+  gap: 10px;
+  height: 180px;
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  color: #333;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.number-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.number-tag:hover::before {
+  opacity: 1;
 }
 
 .number-tag-icon {
-  width: 120px;
-  height: 60px;
+  height: 120px;
   object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .number-text {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
-  margin-top: 4px;
+  margin-top: 10px;
+  color: #333;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
 }
 
 .number-tag:hover {
-  background: rgba(255, 255, 255, 0.4);
-  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(102, 126, 234, 0.3);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
 
 .number-tag:hover .number-tag-icon {
   transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
 .number-tag.completed {
-  background: linear-gradient(45deg, #28a745, #20c997);
+  background: linear-gradient(135deg, rgba(40, 167, 69, 0.95), rgba(32, 201, 151, 0.95));
   border-color: #28a745;
   color: white;
+  box-shadow: 0 8px 32px rgba(40, 167, 69, 0.3);
+}
+
+.number-tag.completed .number-text {
+  color: white;
+  background: none;
+  -webkit-text-fill-color: white;
 }
 
 .number-tag.completed:hover {
-  background: linear-gradient(45deg, #218838, #1e7e34);
+  background: linear-gradient(135deg, #28a745, #20c997);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
 }
 
 .number-tag.checklist-mode {
-  padding: 12px 15px;
-  min-width: 140px;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
-.number-tag.checklist-mode .number-tag-icon {
-  width: 50px;
-  height: 50px;
+  padding: 20px;
+  height: 180px;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .number-tag.checklist-mode .number-text {
-  margin-top: 0;
-  margin-left: auto;
+  margin-top: 10px;
+  margin-left: 0;
+  font-size: 16px;
 }
 
 .checkbox-indicator {
@@ -383,33 +417,45 @@
   font-weight: bold;
 }
 
+/* スマホ向けスタイル（768px以下） */
 @media (max-width: 768px) {
   .App-header {
     padding: 15px 10px;
   }
   
   .App-header h1 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.8) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
   }
   
   .search-container {
     flex-direction: column;
     gap: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
   
   .search-input {
     width: calc(100% - 40px);
     max-width: none;
-    padding: 12px 20px;
+    padding: 15px 20px;
     font-size: 1rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
   }
   
   .search-button, .clear-button {
     width: calc(100% - 40px);
-    padding: 12px 20px;
+    padding: 15px 20px;
     font-size: 1rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
   }
   
   .result-container {
@@ -482,12 +528,20 @@
   
   .available-numbers {
     margin-top: 30px;
-    padding: 20px 15px;
+    padding: 25px 15px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
   }
   
   .available-numbers h3 {
-    font-size: 1.3rem;
-    margin-bottom: 15px;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.9) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   
   .result-header {
@@ -512,38 +566,102 @@
   }
   
   .completion-stats {
-    font-size: 0.8rem;
-    padding: 6px 12px;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   }
   
   .checklist-toggle {
-    font-size: 0.8rem;
-    padding: 8px 15px;
+    font-size: 0.9rem;
+    padding: 10px 18px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    box-shadow: 0 6px 20px rgba(0,123,255,0.3);
+  }
+  
+  /* スマホ用カードスタイル */
+  .number-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    padding: 0 6px;
   }
   
   .number-tag {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-    min-width: 110px;
+    padding: 8px;
+    font-size: 0.75rem;
+    max-width: 100%;
+    gap: 4px;
+    aspect-ratio: 1;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
   
   .number-tag-icon {
-    width: 65px;
-    height: 65px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background: rgba(255, 255, 255, 1);
+    margin: 0 auto;
+  }
+  
+  .number-text {
+    font-size: 15px;
+    margin-top: 8px;
+    margin-left: 0;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    line-height: 1.1;
+  }
+  
+  .number-tag.completed {
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.95), rgba(32, 201, 151, 0.95));
+    backdrop-filter: blur(15px);
+    box-shadow: 0 3px 12px rgba(40, 167, 69, 0.15);
+    border-color: rgba(40, 167, 69, 0.3);
+  }
+  
+  .number-tag.completed .number-text {
+    color: white;
+    background: none;
+    -webkit-text-fill-color: white;
+  }
+  
+  .number-tag:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    background: rgba(255, 255, 255, 1);
+  }
+  
+  .number-tag.completed:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(40, 167, 69, 0.2);
   }
   
   .number-tag.checklist-mode {
-    min-width: 120px;
+    padding: 8px;
+    aspect-ratio: 1;
+    flex-direction: column;
+    justify-content: center;
   }
   
-  .number-tag.checklist-mode .number-tag-icon {
-    width: 45px;
-    height: 45px;
-  }
-  
-  .number-tag.checklist-mode {
-    padding: 10px 12px;
-    min-width: 70px;
+  .number-tag.checklist-mode .number-text {
+    margin-top: 8px;
+    margin-left: 0;
+    font-size: 15px;
   }
   
   .error-message {
@@ -553,85 +671,53 @@
   }
 }
 
-/* 小さいスマホ向け（480px以下） */
-@media (max-width: 480px) {
-  .App-header {
-    padding: 10px 5px;
-  }
-  
-  .App-header h1 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-  }
-  
-  .search-input {
-    width: calc(100% - 20px);
-    padding: 10px 15px;
-    font-size: 0.95rem;
-  }
-  
-  .search-button, .clear-button {
-    width: calc(100% - 20px);
-    padding: 10px 15px;
-    font-size: 0.95rem;
-  }
-  
-  .result-card {
-    padding: 15px 10px;
-  }
-  
-  .result-card h2 {
-    font-size: 1.3rem;
-  }
-  
-  .result-image {
-    max-width: 250px;
-  }
-  
-  .result-press-order {
-    font-size: 0.85rem;
-    padding: 6px;
-  }
-
-  .result-state {
-    font-size: 0.85rem;
-    padding: 6px 10px;
-  }
-
-  .result-state::before {
-    top: 4px;
-    right: 8px;
-    font-size: 0.9rem;
-  }
-
-  .result-condition {
-    font-size: 0.85rem;
-    padding: 6px 10px;
-  }
-
-  .result-condition::before {
-    top: 4px;
-    right: 8px;
-    font-size: 0.9rem;
-  }
-  
-  .available-numbers {
-    padding: 15px 10px;
+/* 横向き表示での統一サイズ（480px以下の画面サイズ） */
+@media (max-width: 480px) and (orientation: landscape) {
+  .number-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    padding: 0 6px;
   }
   
   .number-tag {
-    padding: 6px 10px;
-    font-size: 0.85rem;
-    min-width: 45px;
+    padding: 8px;
+    width: 80px;
+    font-size: 0.75rem;
+    gap: 4px;
+    border-radius: 12px;
+    aspect-ratio: 1;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .number-tag-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    margin: 0 auto;
+  }
+  
+  .number-text {
+    font-size: 15px;
+    margin-top: 8px;
+    margin-left: 0;
+    line-height: 1.1;
   }
   
   .number-tag.checklist-mode {
-    padding: 8px 10px;
-    min-width: 65px;
+    padding: 8px;
+    aspect-ratio: 1;
   }
   
-  .checkbox-indicator {
-    font-size: 1rem;
+  .number-tag.checklist-mode .number-tag-icon {
+    height: 80px;
+  }
+  
+  .number-tag.checklist-mode .number-text {
+    font-size: 15px;
+    margin-top: 8px;
   }
 }
 
@@ -642,16 +728,30 @@
   }
   
   .search-button:active, .clear-button:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
+    transition: transform 0.1s ease;
   }
   
   .number-tag:active {
-    transform: scale(0.95);
-    background: rgba(255, 255, 255, 0.4);
+    transform: scale(0.98) translateY(-2px);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    transition: all 0.1s ease;
+  }
+  
+  .number-tag.completed:active {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
   }
   
   .search-input:focus {
     transform: none;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  }
+  
+  .checklist-toggle:active {
+    transform: scale(0.97);
+    transition: transform 0.1s ease;
   }
 }
 
