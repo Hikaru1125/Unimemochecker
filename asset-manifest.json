@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Unimemochecker/static/css/main.efdd6afc.css",
+    "main.css": "/Unimemochecker/static/css/main.1bfae3f0.css",
     "main.js": "/Unimemochecker/static/js/main.bedfcc0a.js",
     "index.html": "/Unimemochecker/index.html",
-    "main.efdd6afc.css.map": "/Unimemochecker/static/css/main.efdd6afc.css.map",
+    "main.1bfae3f0.css.map": "/Unimemochecker/static/css/main.1bfae3f0.css.map",
     "main.bedfcc0a.js.map": "/Unimemochecker/static/js/main.bedfcc0a.js.map"
   },
   "entrypoints": [
-    "static/css/main.efdd6afc.css",
+    "static/css/main.1bfae3f0.css",
     "static/js/main.bedfcc0a.js"
   ]
 }
